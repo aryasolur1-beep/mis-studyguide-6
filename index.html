@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 6: Hardware & Innovation</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MIS Chapter 6 Study Guide</title>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -27,7 +27,6 @@
             min-height: 100vh;
         }
 
-        /* Navigation Sidebar */
         nav {
             width: 260px;
             background: var(--surface);
@@ -35,9 +34,14 @@
             padding: 2rem 1.5rem;
             position: fixed;
             height: 100vh;
+            overflow-y: auto;
         }
 
-        nav h1 { font-size: 1.5rem; margin-bottom: 2rem; color: var(--accent); }
+        nav h1 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
 
         .nav-btn {
             display: block;
@@ -53,20 +57,22 @@
             transition: 0.3s;
         }
 
-        .nav-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+        .nav-btn.active {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
 
-        /* Main Content */
         main {
             margin-left: 260px;
             padding: 3rem;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
         }
 
         .section { display: none; }
         .section.active { display: block; }
 
-        /* Vocab Cards */
         .search-bar {
             width: 100%;
             padding: 1rem;
@@ -85,12 +91,16 @@
             margin-bottom: 1.5rem;
         }
 
-        .vocab-card h3 { color: var(--accent); margin-bottom: 1rem; font-size: 1.4rem; }
-        
-        .label { 
-            font-family: 'JetBrains Mono', monospace; 
-            font-size: 0.75rem; 
-            color: var(--text-dim); 
+        .vocab-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
             text-transform: uppercase;
             display: block;
             margin-top: 1rem;
@@ -104,7 +114,6 @@
             font-style: italic;
         }
 
-        /* Quiz Styles */
         .q-card {
             background: var(--surface);
             padding: 2rem;
@@ -113,53 +122,97 @@
             border: 1px solid var(--border);
         }
 
+        .q-number {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .scenario {
+            line-height: 1.65;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .question-line {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
         .option {
             display: block;
             width: 100%;
             padding: 1rem;
-            margin-top: 0.5rem;
+            margin-top: 0.6rem;
             background: var(--bg);
             border: 1px solid var(--border);
             color: var(--text-main);
             border-radius: 6px;
             cursor: pointer;
             text-align: left;
+            transition: 0.2s;
         }
 
-        .option:hover { border-color: var(--accent); }
-        .option.correct { background: var(--correct); border-color: var(--correct); }
-        .option.wrong { background: var(--wrong); border-color: var(--wrong); }
+        .option:hover {
+            border-color: var(--accent);
+        }
 
-        .explanation {
+        .option.correct {
+            background: var(--correct);
+            border-color: var(--correct);
+        }
+
+        .option.wrong {
+            background: var(--wrong);
+            border-color: var(--wrong);
+        }
+
+        .answer-block {
             margin-top: 1rem;
             padding: 1rem;
             border-radius: 6px;
             display: none;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border: 1px solid var(--border);
+        }
+
+        .answer-block strong {
+            color: var(--accent);
         }
 
         @media (max-width: 768px) {
-            nav { width: 100%; height: auto; position: relative; }
-            main { margin-left: 0; padding: 1.5rem; }
-            body { flex-direction: column; }
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+
+            body {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <h1>MIS Unit 6</h1>
-    <button class="nav-btn active" onclick="showTab('vocab')">Terms</button>
-    <button class="nav-btn" onclick="showTab('quiz')">Practice Quiz</button>
-    <div style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-dim);">
-        Focus: Hardware, Moore's Law, and E-Waste.
+    <h1>MIS Chapter 6</h1>
+    <button class="nav-btn active" onclick="showTab('vocab', this)">Terms</button>
+    <button class="nav-btn" onclick="showTab('quiz', this)">Practice Quiz</button>
+    <div style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;">
+        Focus: hardware, computing power, storage, IoT, Moore's Law, and related technology concepts.
     </div>
 </nav>
 
 <main>
     <section id="vocab" class="section active">
-        <input type="text" class="search-bar" id="search" placeholder="Search Unit 6 terms..." onkeyup="filterVocab()">
+        <input type="text" class="search-bar" id="search" placeholder="Search Chapter 6 terms..." onkeyup="filterVocab()">
         <div id="vocab-container"></div>
     </section>
 
@@ -169,140 +222,210 @@
 </main>
 
 <script>
-    const vocabData = [
-        {
-            term: "Moore's Law",
-            exact: "The observation that the number of transistors in a dense integrated circuit doubles approximately every two years.",
-            simple: "Computers get twice as fast (or half as expensive) every two years.",
-            example: "The smartphone in your pocket is significantly more powerful than the room-sized supercomputers used by NASA in the 1960s, thanks to 60 years of Moore's Law."
-        },
-        {
-            term: "Volatile Memory",
-            exact: "Storage that is wiped clean when power is cut from a device.",
-            simple: "Temporary storage that needs electricity to keep your data.",
-            example: "RAM (Random Access Memory) is volatile. If your computer crashes before you hit 'Save,' the work currently held in RAM is lost because it requires constant power."
-        },
-        {
-            term: "Non-volatile Memory",
-            exact: "Storage that retains data even when a device is powered down.",
-            simple: "Permanent storage that keeps your files safe even when the power is off.",
-            example: "Flash drives and SSDs (Solid State Drives) are non-volatile. You can unplug a USB stick for a year, and your photos will still be there when you plug it back in."
-        },
-        {
-            term: "Price Elasticity",
-            exact: "The rate at which the demand for a product or service fluctuates with price change.",
-            simple: "How much people buy a product when the price goes up or down.",
-            example: "Technology has high price elasticity. As Moore's Law makes chips cheaper, new markets open up—suddenly, it’s cheap enough to put a computer inside a toaster or a lightbulb."
-        },
-        {
-            term: "Internet of Things (IoT)",
-            exact: "A vision where low-cost sensors, processors, and communication are embedded into a wide array of products and our environment.",
-            simple: "Adding 'brains' and internet connectivity to everyday objects.",
-            example: "A 'Smart' refrigerator that tracks expiration dates and sends a shopping list to your phone is a classic example of an IoT device."
-        }
-    ];
-
-    const quizData = [
-        {
-            q: "A logistics company wants to install sensors on 5,000 delivery trucks to monitor engine health and fuel efficiency in real-time. This massive expansion of 'connected' hardware is best described as:",
-            options: ["A. Quantum Computing", "B. The Internet of Things (IoT)", "C. Price Elasticity", "D. Volatile Storage"],
-            correct: 1,
-            exp: "Correct! IoT refers to embedding sensors and connectivity into physical objects to gather and exchange data. A is wrong as Quantum computing is a different processing method. C refers to demand fluctuations, and D is temporary memory."
-        },
-        {
-            q: "You are working on a massive Excel spreadsheet. Suddenly, the power goes out in your office. When you reboot, your recent unsaved changes are gone. Which hardware component was responsible for this loss?",
-            options: ["A. Non-volatile Storage", "B. The Microprocessor", "C. Volatile RAM", "D. The Motherboard"],
-            correct: 2,
-            exp: "Correct! RAM is volatile memory, meaning it requires power to maintain data. If power is lost, anything not saved to non-volatile storage (like a Hard Drive/SSD) is deleted."
-        },
-        {
-            q: "Which of the following is the most significant social/environmental downside resulting from the rapid pace of Moore's Law?",
-            options: ["A. Lower price elasticity", "B. Increased E-waste", "C. Improved microprocessors", "D. Slower innovation cycles"],
-            correct: 1,
-            exp: "Correct! Because Moore's Law makes tech obsolete so quickly (often in 2-3 years), it creates a massive stream of 'E-waste' (electronic waste) that is difficult and toxic to recycle."
-        },
-        {
-            q: "As the cost of producing 1 gigabyte of storage has plummeted over the last decade, companies have found ways to use storage in products that never had it before (like smart toys). This trend demonstrates:",
-            options: ["A. Low Price Elasticity", "B. High Price Elasticity", "C. The Volatility of Data", "D. Software Ecosystem Lock-in"],
-            correct: 1,
-            exp: "Correct! High price elasticity means that as the price of tech drops, the demand for it—and the number of ways it is used—explodes into new markets."
-        },
-        {
-            q: "A manager is worried that the company's server room is getting too hot and using too much electricity. They are looking for a new type of chip that can handle more data without the heat of traditional processors. Which emerging field might solve this?",
-            options: ["A. Non-volatile Storage", "B. E-waste Management", "C. Quantum Computing", "D. Conventional Microprocessors"],
-            correct: 2,
-            exp: "Correct! Quantum computing uses different physics (qubits) to potentially solve complex problems much faster and more efficiently than traditional chips, though it is still in early development."
-        }
-    ];
-
-    function showTab(id) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        event.target.classList.add('active');
+const vocabData = [
+    {
+        term: "eWaste",
+        exact: "Discarded electronic devices such as computers, phones, and appliances that require proper recycling or disposal.",
+        simple: "Old or broken electronics that need to be thrown away safely.",
+        example: "Throwing away an old laptop instead of recycling it contributes to eWaste."
+    },
+    {
+        term: "Internet of Things (IoT)",
+        exact: "A network of physical devices embedded with sensors, software, and connectivity that allows them to collect and exchange data.",
+        simple: "Everyday devices connected to the internet that can send and receive data.",
+        example: "A smart thermostat that adjusts temperature automatically is part of IoT."
+    },
+    {
+        term: "Konana's Model of the Software Ecosystem",
+        exact: "A model that explains how software creates value through interactions between users, developers, platforms, and complementary products.",
+        simple: "Software becomes more valuable when more people and tools connect to it.",
+        example: "An app store grows stronger as more developers create apps and more users join."
+    },
+    {
+        term: "Memory",
+        exact: "Temporary storage used by a computer to hold data and instructions that are actively being processed.",
+        simple: "Short-term storage a computer uses while working on tasks.",
+        example: "When you open multiple tabs, your computer uses memory to keep them running."
+    },
+    {
+        term: "Microprocessor",
+        exact: "The central processing unit (CPU) of a computer on a single integrated circuit that executes instructions and processes data.",
+        simple: "The brain of the computer that does calculations and runs programs.",
+        example: "Your laptop’s microprocessor runs apps like Chrome and Excel."
+    },
+    {
+        term: "Moore's Law",
+        exact: "The observation that the number of transistors on a microprocessor doubles approximately every two years, increasing computing power while reducing cost.",
+        simple: "Computers keep getting faster and cheaper over time.",
+        example: "New smartphones are more powerful than older ones but cost about the same."
+    },
+    {
+        term: "Non-volatile",
+        exact: "Type of storage that retains data even when the power is turned off.",
+        simple: "Storage that keeps data even when the device is off.",
+        example: "Files saved on a hard drive remain after shutting down the computer."
+    },
+    {
+        term: "Price elasticity",
+        exact: "A measure of how sensitive the demand for a product is to changes in its price.",
+        simple: "How much demand changes when price goes up or down.",
+        example: "If raising the price of an app causes many users to leave, demand is elastic."
+    },
+    {
+        term: "Quantum computing",
+        exact: "A type of computing that uses quantum bits (qubits) and quantum mechanics to perform complex calculations much faster than traditional computers.",
+        simple: "A new kind of computing that can solve very complex problems much faster.",
+        example: "Quantum computers may help solve advanced problems in chemistry or logistics."
+    },
+    {
+        term: "Storage",
+        exact: "Hardware used to permanently store data, programs, and files for later use.",
+        simple: "Where a computer keeps files long-term.",
+        example: "Photos saved on your laptop are stored in storage, not memory."
+    },
+    {
+        term: "Volatile",
+        exact: "Type of memory that loses its contents when power is turned off.",
+        simple: "Memory that gets erased when the device is turned off.",
+        example: "RAM is volatile, so unsaved work disappears after shutdown."
     }
+];
 
-    function renderVocab() {
-        const container = document.getElementById('vocab-container');
-        container.innerHTML = vocabData.map(item => `
-            <div class="vocab-card">
-                <h3>${item.term}</h3>
-                <span class="label">Exact Definition</span>
-                <p>${item.exact}</p>
-                <span class="label">Simple Definition</span>
-                <p>${item.simple}</p>
-                <div class="example-box">
-                    <span class="label" style="margin-top:0">Example</span>
-                    ${item.example}
-                </div>
+const quizData = [
+    {
+        scenario: "A student buys a new laptop for business school. She notices that the laptop opens apps quickly, saves files even after shutdown, and can keep several browser tabs open at once. Her professor asks her to think carefully about which hardware terms explain each of those functions.",
+        question: "Which statement BEST matches the role of memory in this scenario?",
+        options: [
+            "A. Memory permanently stores files for years after the laptop is turned off",
+            "B. Memory temporarily holds data and instructions while tasks are running",
+            "C. Memory connects devices to the internet through embedded sensors",
+            "D. Memory is the main processor that executes all computer instructions"
+        ],
+        correct: 1,
+        explanation: "Memory is correct because it temporarily holds data and instructions that are actively being used. A is wrong because permanent storage is handled by storage devices, not memory. C is wrong because that describes IoT-related connectivity, not memory. D is wrong because the microprocessor, not memory, executes instructions."
+    },
+    {
+        scenario: "A campus startup is designing smart refrigerators for student apartments. The refrigerators track food use, send alerts to a phone, and can automatically suggest grocery lists. The founders say the product creates value because it collects and shares data through internet connectivity.",
+        question: "Which concept BEST describes the smart refrigerator system?",
+        options: [
+            "A. Internet of Things (IoT) because connected devices exchange data",
+            "B. eWaste because appliances eventually need to be recycled",
+            "C. Volatile because the refrigerator loses data when power goes off",
+            "D. Storage because the device holds files over time"
+        ],
+        correct: 0,
+        explanation: "IoT is correct because the refrigerator is a physical device connected to the internet that collects and exchanges data. B is wrong because eWaste refers to discarded electronics, not active smart products. C is wrong because the scenario focuses on connected functionality, not temporary memory behavior. D is wrong because storage may exist in the device, but the main idea is internet-connected smart functionality."
+    },
+    {
+        scenario: "A manager at a tech store explains that each new generation of chips seems to deliver more power for a similar price. Because of that trend, customers expect better devices every few years without huge price increases. The manager uses this pattern to explain why computing products improve so rapidly.",
+        question: "Which concept BEST explains the manager’s point?",
+        options: [
+            "A. Price elasticity because demand changes when prices rise",
+            "B. Quantum computing because qubits solve every consumer problem faster",
+            "C. Moore's Law because chip power tends to grow as costs fall over time",
+            "D. Konana's Model because more developers improve hardware performance"
+        ],
+        correct: 2,
+        explanation: "Moore's Law is correct because it describes the long-run trend of increasing chip power and lower cost per unit of computing capability. A is wrong because price elasticity is about demand response to price, not chip performance trends. B is wrong because quantum computing is a different emerging computing model, not the general pattern behind ordinary chip improvement. D is wrong because Konana's Model explains software ecosystems, not hardware scaling."
+    },
+    {
+        scenario: "A student forgets to save a document before her laptop battery dies. When she restarts the computer, the unsaved work is gone, but her older saved files are still there. Her professor uses this as an example of two different kinds of computer data behavior.",
+        question: "Which pair of concepts BEST explains what happened?",
+        options: [
+            "A. Volatile memory lost the unsaved work, while non-volatile storage kept saved files",
+            "B. IoT devices lost the file, while eWaste protected the saved copy",
+            "C. Microprocessors erased the document, while quantum computing restored old files",
+            "D. Price elasticity changed the file demand, while storage increased market value"
+        ],
+        correct: 0,
+        explanation: "Volatile memory and non-volatile storage is the correct pair because volatile memory loses contents when power is lost, while non-volatile storage keeps saved files. B is wrong because IoT and eWaste are unrelated to this file-loss behavior. C is wrong because the microprocessor does not work the way described, and quantum computing is irrelevant here. D is wrong because price elasticity has nothing to do with file retention."
+    },
+    {
+        scenario: "A professor discusses a future technology that may solve certain complex problems much faster than traditional computers by using qubits instead of standard binary bits. He warns students not to confuse this idea with the normal improvement pattern of ordinary chips. He says it is promising, but still different from everyday laptops and phones.",
+        question: "Which concept is the professor describing?",
+        options: [
+            "A. Microprocessor",
+            "B. Quantum computing",
+            "C. Storage",
+            "D. Moore's Law"
+        ],
+        correct: 1,
+        explanation: "Quantum computing is correct because the scenario specifically mentions qubits and solving some complex problems differently from traditional computers. A is wrong because a microprocessor is the CPU in a conventional computer. C is wrong because storage is where data is kept, not a new computation model. D is wrong because Moore's Law describes a trend in chip improvement, not qubit-based computing."
+    }
+];
+
+function showTab(id, el) {
+    document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    el.classList.add('active');
+}
+
+function renderVocab() {
+    const container = document.getElementById('vocab-container');
+    container.innerHTML = vocabData.map(item => `
+        <div class="vocab-card">
+            <h3>${item.term}</h3>
+            <span class="label">Exact Definition</span>
+            <p>${item.exact}</p>
+            <span class="label">Simple Definition</span>
+            <p>${item.simple}</p>
+            <div class="example-box">
+                <span class="label" style="margin-top:0">Example</span>
+                ${item.example}
             </div>
-        `).join('');
-    }
+        </div>
+    `).join('');
+}
 
-    function filterVocab() {
-        const query = document.getElementById('search').value.toLowerCase();
-        const cards = document.querySelectorAll('.vocab-card');
-        cards.forEach(card => {
-            card.style.display = card.innerText.toLowerCase().includes(query) ? 'block' : 'none';
-        });
-    }
+function filterVocab() {
+    const query = document.getElementById('search').value.toLowerCase();
+    const cards = document.querySelectorAll('.vocab-card');
+    cards.forEach(card => {
+        card.style.display = card.innerText.toLowerCase().includes(query) ? 'block' : 'none';
+    });
+}
 
-    function renderQuiz() {
-        const container = document.getElementById('quiz-container');
-        container.innerHTML = quizData.map((item, i) => `
-            <div class="q-card" id="q${i}">
-                <p><strong>Question ${i+1}:</strong> ${item.q}</p>
-                ${item.options.map((opt, oi) => `
-                    <button class="option" onclick="checkAnswer(${i}, ${oi})">${opt}</button>
-                `).join('')}
-                <div class="explanation" id="exp${i}"></div>
+function renderQuiz() {
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = quizData.map((item, i) => `
+        <div class="q-card" id="q${i}">
+            <div class="q-number">${i + 1}.</div>
+            <p class="scenario">${item.scenario}</p>
+            <p class="question-line">${item.question}</p>
+            ${item.options.map((opt, oi) => `
+                <button class="option" onclick="checkAnswer(${i}, ${oi})">${opt}</button>
+            `).join('')}
+            <div class="answer-block" id="exp${i}">
+                <p><strong>Correct answer:</strong> ${String.fromCharCode(65 + item.correct)}</p>
+                <p><strong>Explanation:</strong> ${item.explanation}</p>
             </div>
-        `).join('');
+        </div>
+    `).join('');
+}
+
+function checkAnswer(qIdx, oIdx) {
+    const q = quizData[qIdx];
+    const card = document.getElementById(`q${qIdx}`);
+    const options = card.querySelectorAll('.option');
+    const exp = document.getElementById(`exp${qIdx}`);
+
+    options.forEach(btn => btn.disabled = true);
+
+    if (oIdx === q.correct) {
+        options[oIdx].classList.add('correct');
+        exp.style.background = "rgba(35, 134, 54, 0.12)";
+    } else {
+        options[oIdx].classList.add('wrong');
+        options[q.correct].classList.add('correct');
+        exp.style.background = "rgba(218, 54, 51, 0.12)";
     }
 
-    function checkAnswer(qIdx, oIdx) {
-        const q = quizData[qIdx];
-        const card = document.getElementById(`q${qIdx}`);
-        const options = card.querySelectorAll('.option');
-        const exp = document.getElementById(`exp${qIdx}`);
+    exp.style.display = "block";
+}
 
-        options.forEach(btn => btn.disabled = true);
-        
-        if (oIdx === q.correct) {
-            options[oIdx].classList.add('correct');
-            exp.style.background = "rgba(35, 134, 54, 0.2)";
-        } else {
-            options[oIdx].classList.add('wrong');
-            options[q.correct].classList.add('correct');
-            exp.style.background = "rgba(218, 54, 51, 0.2)";
-        }
-
-        exp.innerHTML = q.exp;
-        exp.style.display = "block";
-    }
-
-    renderVocab();
-    renderQuiz();
+renderVocab();
+renderQuiz();
 </script>
 
 </body>
